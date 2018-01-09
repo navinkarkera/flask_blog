@@ -1,0 +1,35 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Tweeters{% endblock %}
+{% block body %}
+<div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <br/> {{ utils.flashed_messages() }}
+                <br/>
+                <h1 style="text-align:center;">Tweeters</h1>
+                {% if tweeters %}
+                    <hr class="intro-divider">
+                    <div class="center">
+                        {% for tweeter in tweeters %}
+                        <div>
+                            <h3>{{ tweeter.username }}<br />
+                                <small>Follwers: {{ tweeter.followers.count() }}</small>
+                            </h3>
+                            <a href="{{ url_for('blog.follow', followed_id=tweeter.id ) }}">Follow</a>
+                        </div>
+                        <br/>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div style="text-align: center">
+                        <h3>No tweeters registered yet :(</h3>
+                        <hr class="intro-divider">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

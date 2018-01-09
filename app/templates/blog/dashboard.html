@@ -1,0 +1,40 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}Tweets{% endblock %}
+{% block body %}
+<div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <br/> {{ utils.flashed_messages() }}
+                <br/>
+                <h1 style="text-align:center;">Tweets</h1>
+                {% if tweets %}
+                    <hr class="intro-divider">
+                    <div class="center">
+                        {% for tweet in tweets %}
+                            <div>
+                                <p>
+                                    {{ tweet.content }}
+                                </p>
+                                <small>By: {{ tweet.author.username }} </small>
+                            </div>
+                            <br/>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div style="text-align: center">
+                        <h3>No tweets yet :(</h3>
+                        <hr class="intro-divider">
+                    </div>
+                {% endif %}
+                    <br/>
+                    <div class="center">
+                        {{ wtf.quick_form(form) }}
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
