@@ -1,0 +1,7 @@
+*.pyc
+.projectile
+app/auth/__pycache__
+app/blog/__pycache__
+app/home/__pycache__
+__pycache__
+migrations/__pycache__
